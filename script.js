@@ -4,21 +4,44 @@ function randomNumber(){
 
 
 const parentContainer = document.querySelector('#container')
-
-numofsquares = 399
-
-for(let i = 0; i <= numofsquares; i++){
+const btnChangeSize = document.querySelector('#btn')
 
 
-    const div = document.createElement('div')
 
-    div.setAttribute('style', `border:1px solid black; height: 25px; width: 25px; background: white;`)
+gridBuilder()
 
-    parentContainer.appendChild(div)
+function gridBuilder(){
 
-    div.addEventListener('mouseenter', () => {
-        div.style.backgroundColor = "blue"
-    })
+    let numSq = prompt("how many square?")
+    sizeOfOneSquare = Math.floor(500/numSq)
 
+    for(let i = 0; i < numSq * numSq; i++){
+    
+    
+        const div = document.createElement('div')
+    
+        div.setAttribute('style', `border:1px solid black; height: ${sizeOfOneSquare}px; width: ${sizeOfOneSquare}px; background: white;`)
+    
+        parentContainer.appendChild(div)
+    
+        div.addEventListener('mouseenter', () => {
+            div.style.backgroundColor = "blue"
+        })
+    
+    }
 }
 
+function gridChange(){
+    
+    var child = parentContainer.lastElementChild
+
+    while(child){
+        parentContainer.removeChild(child)
+        child = parentContainer.lastElementChild
+    }
+
+    gridBuilder()
+}
+
+
+btnChangeSize.addEventListener('click', gridChange)
