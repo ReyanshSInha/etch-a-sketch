@@ -13,22 +13,30 @@ gridBuilder()
 function gridBuilder(){
 
     let numSq = prompt("how many square?")
-    sizeOfOneSquare = Math.floor(500/numSq)
 
-    for(let i = 0; i < numSq * numSq; i++){
-    
-    
-        const div = document.createElement('div')
-    
-        div.setAttribute('style', `border:1px solid black; height: ${sizeOfOneSquare}px; width: ${sizeOfOneSquare}px; background: white;`)
-    
-        parentContainer.appendChild(div)
-    
-        div.addEventListener('mouseenter', () => {
-            div.style.backgroundColor = "blue"
-        })
-    
+    if (numSq > 100){
+        alert("enter a value less than 100 to prevent lagging")
+        
+    }else{
+        sizeOfOneSquare = Math.floor(500/numSq)
+
+        for(let i = 0; i < numSq * numSq; i++){
+        
+        
+            const div = document.createElement('div')
+        
+            div.setAttribute('style', `border:1px solid black; height: ${sizeOfOneSquare}px; width: ${sizeOfOneSquare}px; background: white;`)
+        
+            parentContainer.appendChild(div)
+        
+            div.addEventListener('mouseenter', () => {
+                div.style.backgroundColor = "blue"
+            })
+        
+        }
     }
+
+
 }
 
 function gridChange(){
